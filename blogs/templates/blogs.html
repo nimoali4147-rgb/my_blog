@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Blogs{% endblock title %}
+{% block content %}
+{% for post in posts %}
+<div class="max-w-6xl mx-auto">
+<h1 class="text-purple-900 font-bold text-xl ml-20
+">{{post.title | upper}}</h1>
+<p class="text-l ml-20 ">{{post.content | capfirst }}</p>
+<a  class="ml-20 text-red-400" href="{% url 'blog_detail' post.slug %}">Read More</a>
+</div>
+{% endfor %}
+{% endblock content %}

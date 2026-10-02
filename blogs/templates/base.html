@@ -1,12 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
        <title>{% block title %}{% endblock title %}</title>
+       <script src="https://cdn.tailwindcss.com"></script>
+       <link rel="stylesheet"  href="{% static 'css/style.css' %}">
     </head>
 </html>
-<body>
+<body class="min-h-screen flex flex-col">
 
     {% include "navbar.html" %}
-    {% block content %}{% endblock content %}
 
+     <main class="flex-1">
+        {% block content %}{% endblock content %}
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-center py-6">&copy; 2026 DevBlogs. Built with Django. All rights reserved</p>
+        </div>
+    </footer>
 </body>

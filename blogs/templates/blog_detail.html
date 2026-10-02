@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Blog Detail{% endblock title %}
+
+{% block content %}
+<h2>{{post.title}}</h2>
+<p>{{post.content | linebreaks}}</p>
+
+{% endblock content %}

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Note
+from .models import Post
+
 
 # Create your views here.
 def hello(request):
@@ -19,7 +20,16 @@ def  contact(request):
     return render(request, "contact.html", contact)
 
 
-def  note(request):
-    notes = Note.object.all()
-    return render(request, "note.html", {"notes": notes})
+def blogs(request):
+    posts = Post.objects.all()
+    return render(request, "blogs.html", {"posts": posts})
 
+def blog_detail(request, slug):
+    # post = Post.objects.get(id=post_id)
+    post = get_object_or_404(Post, slug=slug) # get_object_or_404 - which id you search if not an existing id it retutn page not found 404
+    return render(request, "blog_detail.html",{"post": post})
+
+# try:
+#     post = Post.objects.get(id=post_id)
+# except Post.DoesNotExist:
+#     raise Http404
